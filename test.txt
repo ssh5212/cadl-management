@@ -1,0 +1,97 @@
+import './App.css';
+import Customer from './components/Customer';
+import { Component } from 'react';
+import {
+    TableContainer,
+    Table,
+    TableHead,
+    TableBody,
+    TableRow,
+    TableCell,
+    Paper,
+} from '@mui/material';
+
+const styles = theme => ({
+    root: {
+        width: '100%',
+        marginTop: theme.spacing(3),
+        overflowX: 'auto',
+    },
+    table: {
+        minWidth: 1080,
+    },
+});
+
+const customers = [
+    {
+        id: 1,
+        name: '신승헌',
+        studentId: '201621751',
+        department: '컴공',
+        gender: '남자',
+        etc: '-',
+    },
+    {
+        id: 2,
+        name: '신승헌',
+        studentId: '201621751',
+        department: '컴공',
+        gender: '남자',
+        etc: '-',
+    },
+    {
+        id: 3,
+        name: '신승헌',
+        studentId: '201621751',
+        department: '컴공',
+        gender: '남자',
+        etc: '-',
+    },
+];
+
+class App extends Component {
+    render() {
+        return (
+            <Paper className='classes.root'>
+                <Table className='classes.table'>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>번호</TableCell>
+                            <TableCell>이름</TableCell>
+                            <TableCell>학번</TableCell>
+                            <TableCell>학과</TableCell>
+                            <TableCell>성별</TableCell>
+                            <TableCell>기타</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {customers.map(c => {
+                            return (
+                                <Customer
+                                    key={c.id}
+                                    id={c.id}
+                                    name={c.name}
+                                    studentId={c.studentId}
+                                    department={c.department}
+                                    gender={c.gender}
+                                    etc={c.etc}
+                                />
+                            );
+                        })}
+                    </TableBody>
+                </Table>
+
+                {/* <Customer
+                    id={customers[0].id}
+                    image={customers[0].image}
+                    name={customers[0].name}
+                    birthday={customers[0].birthday}
+                    gender={customers[0].gender}
+                    job={customers[0].job}
+                /> */}
+            </Paper>
+        );
+    }
+}
+
+export default App;
